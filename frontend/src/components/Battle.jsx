@@ -200,10 +200,6 @@ import Chat from './Chat'
         showNotification('❌ Группа максимум из 3 кораблей', 'error')
         return prev
       }
-      if (prev.length > 0 && prev[0].type !== ship.type) {
-        showNotification('❌ Группа только из кораблей одного типа', 'error')
-        return prev
-      }
       const next = [...prev, ship]
       if (next.length >= 2 && !areShipsAdjacentClient(next)) {
         showNotification('❌ Корабли должны быть соседними (вплотную)', 'error')
@@ -2351,10 +2347,10 @@ import Chat from './Chat'
                 {/* Group management */}
                 {isMyTurn && !battleState?.pending_combat && !torpedoMode && !airAttackMode && (
                   <div className="bg-gray-700 p-3 rounded text-sm text-white space-y-2">
-                    <div className="font-semibold">👥 Группы (2–3 соседних корабля одного типа)</div>
+                    <div className="font-semibold">👥 Группы (2–3 соседних корабля)</div>
                     <div className="text-gray-200">
                       Выбрано: {selectedGroupShips.length}
-                      {selectedGroupShips.length > 0 ? ` • Тип: ${selectedGroupShips[0]?.type}` : ''}
+                      {selectedGroupShips.length > 0 ? ` (${selectedGroupShips.map(s => s.type).join(', ')})` : ''}
                       {selectedGroupShips.length === 1 && selectedGroupShips[0]?.group_id ? ` • Группа: ${selectedGroupShips[0].group_id}` : ''}
                     </div>
                     <div className="text-gray-300 text-xs">
