@@ -466,10 +466,8 @@ def can_ships_be_grouped(ship_types: List[str]) -> Tuple[bool, str]:
         if ship_type not in GROUPABLE_TYPES:
             return False, f'Неизвестный тип корабля: {ship_type}'
 
-    if len(set(ship_types)) > 1:
-        return False, f'Группа может состоять только из кораблей одного типа'
     if len(ship_types) > 3:
-        return False, f'Группа может состоять максимум из 3 кораблей одного типа'
+        return False, f'Группа может состоять максимум из 3 кораблей'
 
     return True, 'OK'
 
