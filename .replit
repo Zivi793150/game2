@@ -53,3 +53,8 @@ externalPort = 80
 deploymentTarget = "autoscale"
 run = ["gunicorn", "--bind=0.0.0.0:8000", "--reuse-port", "main:app"]
 build = ["bash", "-c", "cd frontend && npm install && npm run build"]
+
+[userenv]
+
+[userenv.shared]
+GITHUB_REPO = "https://github.com/Zivi793150/game2.git"
